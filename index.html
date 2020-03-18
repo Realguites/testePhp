@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios HTML</title>
+
+    <style>
+        #conteudo{ /*hashtag relaciona a tag que necessita ser aplicado o style.*/
+            padding : 30px 0px;
+        }
+    </style>
+
+</head>
+<body>
+    <header>
+        Exercícios HTML
+    </header>
+    <nav>
+
+        <a href wm-nav="exercicios/tabela.html">00 - Teste</a>
+        <a href wm-nav = "exercicios/teste.html">01 - Tabela</a>
+        <a href wm-nav = "exercicios/form/form.html">01 - Tabela</a>
+    </nav>
+    <section id = "conteudo"> Exercicio </section>
+    <script>
+        
+        document.querySelectorAll('a').forEach(link => {
+            const conteudo = document.getElementById('conteudo') // pega o elemendo de acordo com a ID
+            link.onclick = function(e){ //evento ao clicar em um link (pode ser um botão)
+                
+              e.preventDefault() //prevenir que a navegação ocorra(uma pagina para outra)
+                fetch(link.href) //faz uma chamada ajax atraves do link passasdo como parametro
+                    .then(resp => resp.text()) //serve para pegar o conteúdo HTML da página
+                    .then(html => conteudo.innerHTML = html)
+
+            }
+            
+
+        }); //seleciona todas as tags
+    </script>
+</body>
+</html>
